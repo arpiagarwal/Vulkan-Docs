@@ -6883,6 +6883,13 @@ typedef void <name>CAMetalLayer</name>;
             <member noautovalidity="true" optional="true"><type>void</type>*        <name>pNext</name></member>
             <member><type>VkBool32</type>                           <name>shaderEarlyAndLateFragmentTests</name></member>
         </type>
+	<type category="struct" name="VkTilePropertiesQCOM">
+            <member values="VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM"><type>VkStructureType</type> <name>sType</name></member>
+            <member optional="true"><type>void</type>*            <name>pNext</name></member>
+            <member><type>VkExtent3D</type>                       <name>tileSize</name></member>
+            <member><type>VkExtent2D</type>                       <name>apronSize</name></member>
+            <member><type>VkOffset2D</type>                       <name>origin</name></member>
+        </type>
     </types>
     <comment>Vulkan enumerant (token) definitions</comment>
 
@@ -11924,6 +11931,19 @@ typedef void <name>CAMetalLayer</name>;
             <param><type>VkDevice</type> <name>device</name></param>
             <param>const <type>VkPipelineInfoEXT</type>* <name>pPipelineInfo</name></param>
             <param noautovalidity="true"><type>VkBaseOutStructure</type>* <name>pPipelineProperties</name></param>
+        </command>
+	<command successcodes="VK_SUCCESS,VK_INCOMPLETE">
+            <proto><type>VkResult</type> <name>vkGetFramebufferTilePropertiesQCOM</name></proto>
+            <param><type>VkDevice</type> <name>device</name></param>
+            <param><type>VkFramebuffer</type> <name>framebuffer</name></param>
+            <param optional="false,true"><type>uint32_t</type>* <name>pPropertiesCount</name></param>
+            <param optional="true" len="pPropertiesCount"><type>VkTilePropertiesQCOM</type>* <name>pProperties</name></param>
+        </command>
+        <command successcodes="VK_SUCCESS">
+            <proto><type>VkResult</type> <name>vkGetDynamicRenderingTilePropertiesQCOM</name></proto>
+            <param><type>VkDevice</type> <name>device</name></param>
+            <param>const <type>VkRenderingInfo</type>* <name>pRenderingInfo</name></param>
+            <param><type>VkTilePropertiesQCOM</type>* <name>pProperties</name></param>
         </command>
     </commands>
 
@@ -18913,6 +18933,16 @@ typedef void <name>CAMetalLayer</name>;
             <require>
                 <enum value="0"                                         name="VK_EXT_EXTENSION_482_SPEC_VERSION"/>
                 <enum value="&quot;VK_EXT_extension_482&quot;"          name="VK_EXT_EXTENSION_482_EXTENSION_NAME"/>
+            </require>
+        </extension>
+    	<extension name="VK_QCOM_tile_properties" number="483" type="device" author="QCOM" contact="Jeff Leger @jackohound" supported="vulkan">
+            <require>
+                <enum value="1"                                               name="VK_QCOM_TILE_PROPERTIES_SPEC_VERSION"/>
+                <enum value="&quot;VK_QCOM_tile_properties&quot;"             name="VK_QCOM_TILE_PROPERTIES_EXTENSION_NAME"/>
+                <command name="vkGetFramebufferTilePropertiesQCOM"/>
+                <command name="vkGetDynamicRenderingTilePropertiesQCOM"/>
+                <enum offset="0" extends="VkStructureType" extnumber="483"    name="VK_STRUCTURE_TYPE_TILE_PROPERTIES_QCOM"/>
+                <type name="VkTilePropertiesQCOM"/>
             </require>
         </extension>
     </extensions>

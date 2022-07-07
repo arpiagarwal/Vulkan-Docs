@@ -1,0 +1,27 @@
+// Copyright 2021-2022 The Khronos Group Inc.
+//
+// SPDX-License-Identifier: CC-BY-4.0
+
+include::{generated}/meta/{refprefix}VK_QCOM_tile_properties.txt[]
+
+=== Other Extension Metadata
+
+*Last Modified Date*::
+    2022-06-22
+*Contributors*::
+  - Jonathan Wicks, Qualcomm Technologies, Inc.
+  - Jonathan Tinkham, Qualcomm Technologies, Inc.
+  - Arpit Agarwal, Qualcomm Technologies, Inc.
+  - Jeff Leger, Qualcomm Technologies, Inc.
+
+=== Description
+
+This extension allows an application to query the tile properties.
+This extension supports both renderpasses and dynamic rendering.
+
+include::{generated}/interfaces/VK_QCOM_tile_properties.txt[]
+
+=== Version History
+
+ * Revision 1, 2022-06-22 (Arpit Agarwal)
+   - Initial version
